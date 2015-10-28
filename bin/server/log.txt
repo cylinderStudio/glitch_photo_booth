@@ -1,0 +1,55 @@
+Thu Oct 22 2015 15:03:08 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:03:32 GMT-0700 (PDT): filename: glitch_vid2015-10-22-15-03-25-983_distorted.mp4
+Thu Oct 22 2015 15:04:42 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:04:58 GMT-0700 (PDT): filename: glitch_vid2015-10-22-15-04-51-160_distorted.mp4
+Thu Oct 22 2015 15:04:58 GMT-0700 (PDT): error uploading to s3: Error: ENOENT: no such file or directory, open '../data/glitch_vid2015-10-22-15-04-51-160_distorted.mp4'
+Thu Oct 22 2015 15:12:48 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:13:10 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:15:55 GMT-0700 (PDT): filename: glitch_vid2015-10-22-15-15-48-129_distorted.mp4
+Thu Oct 22 2015 15:17:25 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:17:57 GMT-0700 (PDT): filename: glitch_vid2015-10-22-15-17-50-825_distorted.mp4
+Thu Oct 22 2015 15:26:31 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:27:01 GMT-0700 (PDT): filename: 2015-10-22-15-26-54-370_distorted.mp4
+Thu Oct 22 2015 15:27:02 GMT-0700 (PDT): Placed object on S3: store_1/110221527_az5u.mp4
+Thu Oct 22 2015 15:27:02 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221527_az5u.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448144822&Signature=DYRsfVALeLhQZbijWfci9650mv8%3D
+Thu Oct 22 2015 15:27:02 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 15:27:07 GMT-0700 (PDT): Failed to save media data in Photo Booth Gateway: undefined
+Thu Oct 22 2015 15:27:07 GMT-0700 (PDT): Desc: Error: socket hang up
+Thu Oct 22 2015 15:44:12 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:47:32 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:47:58 GMT-0700 (PDT): filename: 2015-10-22-15-47-51-323_distorted.mp4
+Thu Oct 22 2015 15:48:00 GMT-0700 (PDT): Placed object on S3: store_1/110221547_voke.mp4
+Thu Oct 22 2015 15:48:00 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221547_voke.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448146080&Signature=CPan2GF%2B8SM4k2mW427BCrZMtTA%3D
+Thu Oct 22 2015 15:48:00 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 15:48:04 GMT-0700 (PDT): Failed to save media data in Photo Booth Gateway: undefined
+Thu Oct 22 2015 15:48:04 GMT-0700 (PDT): Desc: Error: socket hang up
+Thu Oct 22 2015 15:50:21 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:50:51 GMT-0700 (PDT): filename: 2015-10-22-15-50-44-657_distorted.mp4
+Thu Oct 22 2015 15:50:53 GMT-0700 (PDT): Placed object on S3: store_1/110221550_uyh7.mp4
+Thu Oct 22 2015 15:50:53 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221550_uyh7.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448146253&Signature=akj8cIvb2KG9HLNpukr2FTr8fZ8%3D
+Thu Oct 22 2015 15:50:53 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 15:50:53 GMT-0700 (PDT): Saved media data in Photo Booth Gateway
+Thu Oct 22 2015 15:53:44 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 15:54:07 GMT-0700 (PDT): filename: 2015-10-22-15-54-00-624_distorted.mp4
+Thu Oct 22 2015 15:54:09 GMT-0700 (PDT): Placed object on S3: store_1/110221554_jvnr.mp4
+Thu Oct 22 2015 15:54:09 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221554_jvnr.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448146449&Signature=8aClF5glBlPom14fG5bFCFCEUzk%3D
+Thu Oct 22 2015 15:54:09 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 15:54:09 GMT-0700 (PDT): Saved media data in Photo Booth Gateway
+Thu Oct 22 2015 16:02:44 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 16:03:11 GMT-0700 (PDT): filename: 2015-10-22-16-03-04-166_distorted.mp4
+Thu Oct 22 2015 16:03:12 GMT-0700 (PDT): Placed object on S3: store_1/110221603_7b5g.mp4
+Thu Oct 22 2015 16:03:12 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221603_7b5g.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448146992&Signature=NTuORyxlueEYYZshY7lTaUW1AEA%3D
+Thu Oct 22 2015 16:03:12 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 16:03:12 GMT-0700 (PDT): Saved media data in Photo Booth Gateway
+Thu Oct 22 2015 16:05:56 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 16:06:22 GMT-0700 (PDT): filename: 2015-10-22-16-06-15-942_distorted.mp4
+Thu Oct 22 2015 16:06:24 GMT-0700 (PDT): Placed object on S3: store_1/110221606_vmvq.mp4
+Thu Oct 22 2015 16:06:24 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221606_vmvq.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448147184&Signature=e9pSEw9vxnherTMkpQ1L21plaXE%3D
+Thu Oct 22 2015 16:06:24 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 16:06:24 GMT-0700 (PDT): Saved media data in Photo Booth Gateway
+Thu Oct 22 2015 16:10:43 GMT-0700 (PDT): Server started
+Thu Oct 22 2015 16:10:56 GMT-0700 (PDT): filename: 2015-10-22-16-10-49-563_distorted.mp4
+Thu Oct 22 2015 16:10:58 GMT-0700 (PDT): Placed object on S3: store_1/110221610_ga7n.mp4
+Thu Oct 22 2015 16:10:58 GMT-0700 (PDT): Returned signed URL: https://idev-em-team.s3-us-west-2.amazonaws.com/store_1/110221610_ga7n.mp4?AWSAccessKeyId=AKIAJ562XF34DJP4TGJQ&Expires=1448147458&Signature=ylBVchmxUkiaLp5nLKuy44wbv2E%3D
+Thu Oct 22 2015 16:10:58 GMT-0700 (PDT): Attempting to save media data in Photo Booth Gateway
+Thu Oct 22 2015 16:10:58 GMT-0700 (PDT): Saved media data in Photo Booth Gateway: ga7n

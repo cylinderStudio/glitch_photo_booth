@@ -4,6 +4,7 @@
 #include "ofxVideoRecorder.h"
 #include "ofxGui.h"
 #include "ofxOsc.h"
+#include "ofxTimer.h"
 
 class ofApp : public ofBaseApp{
     
@@ -25,6 +26,7 @@ public:
     void clearFbo(ofFbo& fbo);
     void startRecording(const unsigned long long duration);
     void stopRecording();
+    void sendHeartbeat(ofEventArgs &args);
     string generateTimeStamp(unsigned long long time);
     void drawButton(const ofVec2f& center);
     const int buttonSize = 50;
@@ -32,7 +34,7 @@ public:
     const int RECEIVE_PORT = 12345;
     const int SEND_PORT = 12346;
     ofVec2f buttonCenter;
-    
+
     ofMesh quad;
     
     bool hideGui;
@@ -62,12 +64,10 @@ public:
     ofxVideoRecorder    vidRecorderMP4;
     ofxVideoRecorder    vidRecorderMP4Distort;
 
-    bool isRecording;
-    bool isProcessing;
-    long long mark;
     string fileName;
     string fileExt;
     string lastFile;
+    string code;
     
     ofFbo badTVFbo;
     ofFbo rgbShiftFbo;
@@ -85,4 +85,19 @@ public:
     void setupArduino(const int & version);
     void analogPinChanged(const int & pinNum);
     void updateArduino();
+    
+    void timerFinished(ofEventArgs& arg);
+    
+private:
+    int programState;
+    string serverPID; //process ID for node server
+    ofxTimer timer, heartbeatTimer;
+    
+    enum States{
+        READY,
+        RECORDING,
+        PROCESSING,
+        FINISHED,
+        ERROR
+    };
 };

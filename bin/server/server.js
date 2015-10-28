@@ -4,6 +4,7 @@ var express = require('express'),
 	dgram = require('dgram'),
 	osc = require('osc-min'),
 	AWS = require('aws-sdk'),
+	proxy = require('proxy-agent'),
 	request = require('request'),
 	fs = require('fs'),
 	config = require('./creds/config'),
@@ -22,9 +23,13 @@ const SEND_PORT = 12345,
 	API_URL = config.settings.photobooth_gateway_URL,
 
 AWS.config.update(AWS_PARAMS);
+AWS.config.update({
+  httpOptions: { agent: proxy('http://webproxy.nordstrom.net:8181') }
+});
 
 sendSocket.bind(SEND_PORT);
 receiveSocket.bind(RECEIVE_PORT);
+
 
 function getOSCMessage(msg){
 	//extract relevant data from OSC Message
@@ -32,25 +37,35 @@ function getOSCMessage(msg){
 	try {
 		// console.log(oscMessage);
 		// translate osc buffer into javascript object
+
 		var element = oscMessage.elements[0],
-			address = element.address,
-			args = element.args,
+			address = element.address;
+
+		if(address === "/video"){
+			var	args = element.args,
 			cleanMovie = args[0].value,
 			distortedMovie = args[1].value;
 
-		return {
-			address: address,
-			cleanMovie: cleanMovie,
-			distortedMovie: distortedMovie
-		};
+			return {
+				type: 'video',
+				address: address,
+				cleanMovie: cleanMovie,
+				distortedMovie: distortedMovie
+			};
+		}else if(address === "/heartbeat"){
+			return {
+				type: 'heartbeat'
+			}
+		}
 
 	}catch(error){
-		console.log("invalid OSC packet");
+		print("invalid OSC packet");
 	}
 }
 
 receiveSocket.on('message', function(message, remote){
 	var oscData = getOSCMessage(message);
+<<<<<<< HEAD
 	aws_s3.saveMediaOnS3(OUTPUT_DIR + oscData.distortedMovie);
 
 	console.log('filename: ', oscData.distortedMovie);
@@ -60,8 +75,14 @@ receiveSocket.on('message', function(message, remote){
 		address: '/video',
 		cleanMovie: 'filename.mp4',
 		distortedMovie: 'filename_distorted.mp4'
+=======
+	if(oscData.type === 'video'){
+		aws_s3.saveMediaOnS3(OUTPUT_DIR + oscData.distortedMovie);
+		print('filename: ' + oscData.distortedMovie);
+	}else if(oscData.type === 'heartbeat'){
+		print('heartbeat received.');
+>>>>>>> upstream/master
 	}
-	*/
 });
 
 function sendOSCMessage(address, code){
@@ -101,6 +122,7 @@ var aws_s3 = (function() {
 		saveMediaOnS3: function(media_string) {
 			fs.readFile(media_string, function (err, data) {
 			  if (err) { 
+			  	print('error uploading to s3: ' + err);
 			  	sendOSCMessage('failure'); 
 			  } else {
 			  	mediaUUID = generateUUID();		// globar var used in file stamp and msg back to client
@@ -116,10 +138,10 @@ var aws_s3 = (function() {
 
 					s3.putObject(params, function(err, data) {
 						if (err) { 
-							console.log('Error putting object on S3: ', err); 
+							print('Error putting object on S3: ' + err); 
 							sendOSCMessage('failure');
 						} else { 
-							console.log('Placed object on S3: ', object_key); 
+							print('Placed object on S3: ' + object_key); 
 							aws_s3.getAndReturnSignedURL(object_key);
 						}  
 					});
@@ -137,10 +159,10 @@ var aws_s3 = (function() {
 
 			s3.getSignedUrl('getObject', params, function(err, url) {
 				if (err) {
-					console.log('Error getting signed URL from S3: ', err);
+					print('Error getting signed URL from S3: ' + err);
 					sendOSCMessage('failure');
 				} else {
-					console.log('Returned signed URL: ', url);
+					print('Returned signed URL: ' +  url);
 					postMetadataToGateway(url);
 				}
 			});
@@ -149,7 +171,7 @@ var aws_s3 = (function() {
 })();
 
 function postMetadataToGateway(URL) {
-	console.log('Attempting to save media data in Photo Booth Gateway');
+	print('Attempting to save media data in Photo Booth Gateway');
 
 	var tempObject = { 
 		'UUID': mediaUUID, 
@@ -165,14 +187,14 @@ function postMetadataToGateway(URL) {
     json: true,
     body: tempObject
 	}, function (error, response, body) {
-		// console.log(response);
+		// print(response);
 		if (!error && response.statusCode == 200) {
-	    	// console.log('success: ' + response);
-			console.log('Saved media data in Photo Booth Gateway');
+	    	// print('success: ' + response);
+			print('Saved media data in Photo Booth Gateway: ' + mediaUUID);
 			sendOSCMessage('uploaded', mediaUUID); 
 	  } else {
-			console.log('Failed to save media data in Photo Booth Gateway');
-			console.log('Desc: ' + error);
+			print('Failed to save media data in Photo Booth Gateway: ' + response);
+			print('Desc: ' + error);
 			sendOSCMessage('failure', '');
 	  }
 	});
@@ -209,4 +231,11 @@ function generateFileStamp(UUID) {
 
 	return file_stamp;
 }
+
+function print(message){
+	console.log(Date() + ': ' + message);
+}
+
 // === END HELPERS
+
+print("Server started");

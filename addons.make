@@ -1,3 +1,4 @@
 ofxOsc
 ofxVideoRecorder
 ofxGui
+ofxTimer
