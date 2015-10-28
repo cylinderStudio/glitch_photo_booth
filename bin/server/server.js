@@ -19,8 +19,7 @@ const SEND_PORT = 12345,
 	EXPIRE_TIME = 2592000,			// S3 file expiration, in milliseconds: 1 mo. = 60 * 60 * 24 * 30 = 2592000
 	AWS_PARAMS = config.AWS_params,
 	BUCKET = config.settings.bucket,
-	API_URL = config.settings.URLs.photobooth_gateway_URL,
-	KEEN_URL = config.settings.URLs.keen_project_URL;
+	API_URL = config.settings.photobooth_gateway_URL,
 
 AWS.config.update(AWS_PARAMS);
 
@@ -53,7 +52,6 @@ function getOSCMessage(msg){
 receiveSocket.on('message', function(message, remote){
 	var oscData = getOSCMessage(message);
 	aws_s3.saveMediaOnS3(OUTPUT_DIR + oscData.distortedMovie);
-	// aws_s3.saveMediaOnS3(OUTPUT_DIR + 'test.mp4');
 
 	console.log('filename: ', oscData.distortedMovie);
 
@@ -172,13 +170,8 @@ function postMetadataToGateway(URL) {
 	    	// console.log('success: ' + response);
 			console.log('Saved media data in Photo Booth Gateway');
 			sendOSCMessage('uploaded', mediaUUID); 
-			makeKeenMetricsEntry({ 
-				'store': 'Store ' + STORE_ID,
-				'media': MEDIA_TYPE,
-				'image_id': mediaUUID 
-			});
 	  } else {
-			console.log('Failed to save media data in Photo Booth Gateway: ' + response);
+			console.log('Failed to save media data in Photo Booth Gateway');
 			console.log('Desc: ' + error);
 			sendOSCMessage('failure', '');
 	  }
@@ -215,22 +208,5 @@ function generateFileStamp(UUID) {
 	}
 
 	return file_stamp;
-}
-
-function makeKeenMetricsEntry (obj) {
-	request({
-    url: KEEN_URL,
-    method: 'POST',
-    json: true,
-    body: obj
-	}, function (error, response, body) {
-		// console.log(response);
-		if (!error) {
-	    // console.log('Posted event data to Keen.io');
-			// console.log(textStatus);
-	  } else {
-			console.log('Failed to save event data in Keen.io: ' + response.statusCode);
-	  }
-	});
 }
 // === END HELPERS
